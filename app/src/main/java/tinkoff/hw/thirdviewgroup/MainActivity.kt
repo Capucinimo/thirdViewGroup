@@ -2,6 +2,7 @@ package tinkoff.hw.thirdviewgroup
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.google.android.material.chip.ChipDrawable
 import com.google.android.material.chip.Chip
@@ -58,7 +59,7 @@ class MainActivity : AppCompatActivity() {
     private fun createChip(entryViewGroup: ViewGroup, text: String, newViewGroup: ViewGroup) {
         val chip = Chip(this)
         chip.setChipDrawable(ChipDrawable.createFromResource(this, R.xml.chip))
-        //val chip = LayoutInflater.from(this).inflate(R.layout.chip, entryViewGroup, false)
+        //val chip = LayoutInflater.from(this).inflate(R.layout.chip, entryViewGroup, false) as Chip
         chip.chipText = text
         //chip.id = View.generateViewId()
         chip.setOnCloseIconClickListener {

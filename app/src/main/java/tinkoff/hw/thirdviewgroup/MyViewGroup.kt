@@ -99,8 +99,8 @@ class MyViewGroup : ViewGroup {
     }
     private fun setAttributes(context:Context, attrs: AttributeSet) {
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.MyViewGroup)
-        paddingWidth = typedArray.getInt(R.styleable.MyViewGroup_padding_width, 0)
-        paddingHeight = typedArray.getInt(R.styleable.MyViewGroup_padding_height, 0)
+        paddingWidth = typedArray.getInt(R.styleable.MyViewGroup_interval_width, 0)
+        paddingHeight = typedArray.getInt(R.styleable.MyViewGroup_interval_height, 0)
         childHeight = typedArray.getInt(R.styleable.MyViewGroup_child_height, 50)
         gravity = typedArray.getInt(R.styleable.MyViewGroup_android_gravity, Gravity.LEFT)
         typedArray.recycle()
