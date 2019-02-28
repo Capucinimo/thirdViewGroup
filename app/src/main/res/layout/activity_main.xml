@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
@@ -7,34 +7,49 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         tools:context=".MainActivity"
         android:orientation="vertical">
-<tinkoff.hw.thirdviewgroup.MyViewGroup
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/firstGroup"
-        app:gravity="left"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_weight="1"
-        app:padding_height="10"
-        app:padding_width="20"
-        app:child_height="70">
-</tinkoff.hw.thirdviewgroup.MyViewGroup>
-    <TextView android:layout_width="match_parent"
-            android:layout_height="5dp"
-            android:background="@color/colorPrimary">
-    </TextView>
-    <tinkoff.hw.thirdviewgroup.MyViewGroup
+    <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            tools:context=".MainActivity"
+            android:orientation="vertical">
+        <tinkoff.hw.thirdviewgroup.MyViewGroup
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/firstGroup"
+            android:gravity="left"
+            android:paddingRight="50dp"
+            android:paddingLeft="50dp"
+            android:paddingTop="50dp"
+            android:paddingBottom="50dp"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            app:interval_height="10"
+            app:interval_width="20"
+            app:child_height="70">
+        </tinkoff.hw.thirdviewgroup.MyViewGroup>
+        <View android:layout_width="match_parent"
+              android:layout_height="5dp"
+              android:background="@color/colorPrimary">
+        </View>
+        <tinkoff.hw.thirdviewgroup.MyViewGroup
             xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/secondGroup"
-            app:gravity="right"
+            android:gravity="right"
+            android:paddingRight="20dp"
+            android:paddingLeft="20dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
             xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:layout_weight="1"
-            app:padding_height="50"
-            app:padding_width="40"
+            app:interval_height="50"
+            app:interval_width="40"
             app:child_height="100">
-    </tinkoff.hw.thirdviewgroup.MyViewGroup>
-</LinearLayout>
+        </tinkoff.hw.thirdviewgroup.MyViewGroup>
+    </LinearLayout>
+</ScrollView>
