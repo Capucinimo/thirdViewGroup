@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".MainActivity"
+        android:orientation="vertical">
+    <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            tools:context=".MainActivity"
+            android:orientation="vertical"
+            >
+    <tinkoff.hw.thirdviewgroup.MyViewGroup
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/firstGroup"
+            app:gravity="left"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            app:padding_height="10"
+            app:padding_width="20"
+            app:child_height="70">
+    </tinkoff.hw.thirdviewgroup.MyViewGroup>
+    <View android:layout_width="match_parent"
+              android:layout_height="5dp"
+              android:background="@color/colorPrimary">
+    </View>
+    <tinkoff.hw.thirdviewgroup.MyViewGroup
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/secondGroup"
+            app:gravity="right"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            app:padding_height="50"
+            app:padding_width="40"
+            app:child_height="100">
+    </tinkoff.hw.thirdviewgroup.MyViewGroup>
+    </LinearLayout>
+</ScrollView>

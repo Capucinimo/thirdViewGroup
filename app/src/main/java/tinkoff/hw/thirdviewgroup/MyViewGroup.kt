@@ -203,7 +203,9 @@ class MyViewGroup : ViewGroup {
 
             }
             xpos = width - paddingRight
-            for (i in childCount-1 downTo lastViews.last()+1) {
+            val firstElement= if (lastViews.isEmpty()) 0
+            else lastViews.last()+1
+            for (i in childCount-1 downTo firstElement) {
                 val child = getChildAt(i)
                 if (child.visibility != GONE) {
                     val childw = child.measuredWidth
