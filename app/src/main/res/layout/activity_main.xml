@@ -18,6 +18,8 @@
         <tinkoff.hw.thirdviewgroup.MyViewGroup
             xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:animateLayoutChanges="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/firstGroup"
@@ -26,7 +28,6 @@
             android:paddingLeft="50dp"
             android:paddingTop="50dp"
             android:paddingBottom="50dp"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
             app:interval_height="10"
             app:interval_width="20"
             app:child_height="70">
@@ -38,6 +39,8 @@
         <tinkoff.hw.thirdviewgroup.MyViewGroup
             xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:animateLayoutChanges="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/secondGroup"
@@ -46,7 +49,6 @@
             android:paddingLeft="20dp"
             android:paddingTop="20dp"
             android:paddingBottom="20dp"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
             app:interval_height="50"
             app:interval_width="40"
             app:child_height="100">

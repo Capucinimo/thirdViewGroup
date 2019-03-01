@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.google.android.material.chip.ChipDrawable
 import com.google.android.material.chip.Chip
 
 class MainActivity : AppCompatActivity() {
@@ -57,19 +56,23 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun createChip(entryViewGroup: ViewGroup, text: String, newViewGroup: ViewGroup) {
-        val chip = Chip(this)
-        chip.setChipDrawable(ChipDrawable.createFromResource(this, R.xml.chip))
-        //val chip = LayoutInflater.from(this).inflate(R.layout.chip, entryViewGroup, false) as Chip
+        //val chip = Chip(this)
+        //chip.setChipDrawable(ChipDrawable.createFromResource(this, R.xml.chip))
+        val chip = LayoutInflater.from(this).inflate(R.layout.chip, entryViewGroup, false) as com.google.android.material.chip.Chip
+        //chip.text = text
         chip.chipText = text
         //chip.id = View.generateViewId()
         chip.setOnCloseIconClickListener {
-            if (chip.parent == entryViewGroup) {
+            entryViewGroup.removeView(chip)
+            createChip(newViewGroup,text,entryViewGroup)
+            //Чтобы заработала анимация
+            /*if (chip.parent == entryViewGroup) {
                 entryViewGroup.removeView(chip)
                 newViewGroup.addView(chip)
             } else if (chip.parent == newViewGroup) {
                 newViewGroup.removeView(chip)
                 entryViewGroup.addView(chip)
-            }
+            }*/
         }
         entryViewGroup.addView(chip)
     }
