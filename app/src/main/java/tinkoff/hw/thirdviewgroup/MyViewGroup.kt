@@ -25,13 +25,13 @@ class MyViewGroup : ViewGroup {
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-        val width = MeasureSpec.getSize(widthMeasureSpec) - paddingRight
+        val width = MeasureSpec.getSize(widthMeasureSpec)
         val height = MeasureSpec.getSize(heightMeasureSpec)
         val count = childCount
         var xPosition = paddingLeft
         var yPosition = paddingTop
         val childHeightMeasureSpec= MeasureSpec.makeMeasureSpec(childHeight, MeasureSpec.EXACTLY)
-        val childWidthMeasureSpec = MeasureSpec.makeMeasureSpec(width,MeasureSpec.AT_MOST)
+        val childWidthMeasureSpec = MeasureSpec.makeMeasureSpec(width - paddingLeft - paddingRight,MeasureSpec.AT_MOST)
         val stringHeight = childHeight + paddingHeight
         lastViews.clear()
         for (i in 0 until count) {
@@ -39,7 +39,7 @@ class MyViewGroup : ViewGroup {
             if (child.visibility != GONE) {
                 child.measure(childWidthMeasureSpec, childHeightMeasureSpec)
                 val childWidth = child.measuredWidth
-                if (xPosition + childWidth > width) {
+                if (xPosition + childWidth > width - paddingRight) {
                     xPosition = paddingLeft
                     yPosition += stringHeight
                     lastViews.add(i-1)
@@ -53,7 +53,7 @@ class MyViewGroup : ViewGroup {
             MeasureSpec.AT_MOST -> resultHeight = if (yPosition + stringHeight < height) yPosition + stringHeight + paddingBottom else height
             MeasureSpec.EXACTLY -> resultHeight = height
         }
-        setMeasuredDimension(width + paddingRight, resultHeight)
+        setMeasuredDimension(width, resultHeight)
     }
     override fun onLayout(changed: Boolean, l: Int, t: Int, r: Int, b: Int) {
         val width = r - l - paddingRight
