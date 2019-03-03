@@ -50,7 +50,7 @@ class MyViewGroup : ViewGroup {
         var resultHeight = 0
         when (MeasureSpec.getMode(heightMeasureSpec)) {
             MeasureSpec.UNSPECIFIED -> resultHeight = yPosition + stringHeight + paddingBottom
-            MeasureSpec.AT_MOST -> resultHeight = if (yPosition + stringHeight < height) yPosition + stringHeight + paddingBottom else height
+            MeasureSpec.AT_MOST -> resultHeight = if (yPosition + stringHeight + paddingBottom < height) yPosition + stringHeight + paddingBottom else height
             MeasureSpec.EXACTLY -> resultHeight = height
         }
         setMeasuredDimension(width, resultHeight)
