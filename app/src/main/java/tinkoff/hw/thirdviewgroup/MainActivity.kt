@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import com.google.android.material.chip.Chip
 
 class MainActivity : AppCompatActivity() {
@@ -13,7 +14,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val firstGroup = findViewById<MyViewGroup>(R.id.firstGroup)
         val secondGroup = findViewById<MyViewGroup>(R.id.secondGroup)
-
         if (savedInstanceState != null) {
             val chipsTextFirstGroup = savedInstanceState.getStringArrayList("chipsTextFirstGroup")!!
             val chipsTextSecondGroup = savedInstanceState.getStringArrayList("chipsTextSecondGroup")!!
@@ -58,14 +58,12 @@ class MainActivity : AppCompatActivity() {
     private fun createChip(entryViewGroup: ViewGroup, text: String, newViewGroup: ViewGroup) {
         //val chip = Chip(this)
         //chip.setChipDrawable(ChipDrawable.createFromResource(this, R.xml.chip))
-        val chip = LayoutInflater.from(this).inflate(R.layout.chip, entryViewGroup, false) as com.google.android.material.chip.Chip
+        val chip = LayoutInflater.from(this).inflate(R.layout.chip,findViewById<LinearLayout>(R.id.LinearLayout), false) as com.google.android.material.chip.Chip
         //chip.text = text
         chip.chipText = text
         //chip.id = View.generateViewId()
         chip.setOnCloseIconClickListener {
-            entryViewGroup.removeView(chip)
-            createChip(newViewGroup,text,entryViewGroup)
-            //Чтобы заработала анимация
+            //Не работает анимация - view не успевает ремувнуться перед добавлением в другую группу
             /*if (chip.parent == entryViewGroup) {
                 entryViewGroup.removeView(chip)
                 newViewGroup.addView(chip)
@@ -73,6 +71,8 @@ class MainActivity : AppCompatActivity() {
                 newViewGroup.removeView(chip)
                 entryViewGroup.addView(chip)
             }*/
+            entryViewGroup.removeView(chip)
+            createChip(newViewGroup,text,entryViewGroup)
         }
         entryViewGroup.addView(chip)
     }

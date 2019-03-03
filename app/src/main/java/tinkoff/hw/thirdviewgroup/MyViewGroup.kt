@@ -4,6 +4,10 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.ViewGroup
 import android.view.Gravity
+import androidx.core.view.marginBottom
+import androidx.core.view.marginLeft
+import androidx.core.view.marginRight
+import androidx.core.view.marginTop
 
 class MyViewGroup : ViewGroup {
 
@@ -32,25 +36,31 @@ class MyViewGroup : ViewGroup {
         var yPosition = paddingTop
         val childHeightMeasureSpec= MeasureSpec.makeMeasureSpec(childHeight, MeasureSpec.EXACTLY)
         val childWidthMeasureSpec = MeasureSpec.makeMeasureSpec(width - paddingLeft - paddingRight,MeasureSpec.AT_MOST)
-        val stringHeight = childHeight + paddingHeight
+        var stringHeight = childHeight + paddingHeight
         lastViews.clear()
         for (i in 0 until count) {
             val child = getChildAt(i)
+            val leftMargin = child.marginLeft
+            val rightMargin = child.marginRight
+            val topMargin = child.marginTop
+            val bottomMargin = child.marginBottom
             if (child.visibility != GONE) {
                 child.measure(childWidthMeasureSpec, childHeightMeasureSpec)
                 val childWidth = child.measuredWidth
-                if (xPosition + childWidth > width - paddingRight) {
+                if (xPosition + leftMargin + childWidth + rightMargin > width - paddingRight) {
                     xPosition = paddingLeft
                     yPosition += stringHeight
+                    stringHeight = childHeight + paddingHeight
                     lastViews.add(i-1)
                 }
-                xPosition += childWidth + paddingWidth
+                stringHeight = Math.max(stringHeight, childHeight + paddingHeight + topMargin + bottomMargin)
+                xPosition += leftMargin + childWidth + rightMargin + paddingWidth
             }
         }
         var resultHeight = 0
         when (MeasureSpec.getMode(heightMeasureSpec)) {
-            MeasureSpec.UNSPECIFIED -> resultHeight = yPosition + stringHeight + paddingBottom
-            MeasureSpec.AT_MOST -> resultHeight = if (yPosition + stringHeight + paddingBottom < height) yPosition + stringHeight + paddingBottom else height
+            MeasureSpec.UNSPECIFIED -> resultHeight = yPosition + stringHeight - paddingHeight + paddingBottom
+            MeasureSpec.AT_MOST -> resultHeight = if (yPosition + stringHeight - paddingHeight + paddingBottom < height) yPosition + stringHeight + paddingBottom else height
             MeasureSpec.EXACTLY -> resultHeight = height
         }
         setMeasuredDimension(width, resultHeight)
@@ -59,17 +69,23 @@ class MyViewGroup : ViewGroup {
         val width = r - l - paddingRight
         var xPosition = paddingLeft
         var yPosition = paddingTop
+        var stringHeight = childHeight + paddingHeight
         if (gravity != Gravity.RIGHT) for (i in 0 until childCount) {
             val child = getChildAt(i)
+            val leftMargin = child.marginLeft
+            val rightMargin = child.marginRight
+            val topMargin = child.marginTop
+            val bottomMargin = child.marginBottom
             if (child.visibility != GONE) {
                 val childWidth = child.measuredWidth
-                val childHeight = child.measuredHeight
-                if (xPosition + childWidth > width) {
+                if (xPosition + leftMargin + childWidth + rightMargin > width) {
                     xPosition = paddingLeft
-                    yPosition += this.childHeight + paddingHeight
+                    yPosition += stringHeight
+                    stringHeight = childHeight + paddingHeight
                 }
-                child.layout(xPosition, yPosition, xPosition + childWidth, yPosition + childHeight)
-                xPosition += childWidth + paddingWidth
+                stringHeight = Math.max(stringHeight, childHeight + paddingHeight + topMargin + bottomMargin)
+                child.layout(xPosition+leftMargin, yPosition+topMargin, xPosition + leftMargin + childWidth, yPosition + topMargin + childHeight)
+                xPosition += leftMargin + childWidth + rightMargin + paddingWidth
             }
         }
         else {
@@ -78,21 +94,30 @@ class MyViewGroup : ViewGroup {
                 for (j in lastViews[i] downTo if (i == 0) 0 else lastViews[i - 1] + 1) {
                     val child = getChildAt(j)
                     if (child.visibility != GONE) {
+                        val leftMargin = child.marginLeft
+                        val rightMargin = child.marginRight
+                        val topMargin = child.marginTop
+                        val bottomMargin = child.marginBottom
                         val childWidth = child.measuredWidth
-                        child.layout(xPosition - childWidth, yPosition, xPosition, yPosition + childHeight)
-                        xPosition -= childWidth + paddingWidth
+                        child.layout(xPosition - rightMargin - childWidth, yPosition + topMargin, xPosition - rightMargin, yPosition + topMargin + childHeight)
+                        xPosition -= leftMargin + childWidth + rightMargin + paddingWidth
+                        stringHeight = Math.max(stringHeight, childHeight + paddingHeight + topMargin + bottomMargin)
                     }
                 }
-                yPosition += childHeight + paddingHeight
+                yPosition += stringHeight
+                stringHeight = childHeight + paddingHeight
             }
             xPosition = width
             val firstElement = if (lastViews.isEmpty()) 0 else lastViews.last() + 1
             for (i in childCount - 1 downTo firstElement) {
                 val child = getChildAt(i)
                 if (child.visibility != GONE) {
+                    val leftMargin = child.marginLeft
+                    val rightMargin = child.marginRight
+                    val topMargin = child.marginTop
                     val childWidth = child.measuredWidth
-                    child.layout(xPosition - childWidth, yPosition, xPosition, yPosition + childHeight)
-                    xPosition -= childWidth + paddingWidth
+                    child.layout(xPosition - rightMargin - childWidth, yPosition + topMargin, xPosition - rightMargin, yPosition + topMargin + childHeight)
+                    xPosition -= leftMargin + childWidth + rightMargin + paddingWidth
                 }
             }
         }

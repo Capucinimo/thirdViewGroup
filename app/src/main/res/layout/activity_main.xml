@@ -4,6 +4,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:id="@+id/ScrollView"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         tools:context=".MainActivity"
         android:orientation="vertical">
@@ -12,6 +13,7 @@
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/LinearLayout"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             tools:context=".MainActivity"
             android:orientation="vertical">
@@ -32,10 +34,6 @@
             app:interval_width="20"
             app:child_height="70">
         </tinkoff.hw.thirdviewgroup.MyViewGroup>
-        <View android:layout_width="match_parent"
-              android:layout_height="5dp"
-              android:background="@color/colorPrimary">
-        </View>
         <tinkoff.hw.thirdviewgroup.MyViewGroup
             xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"
@@ -51,7 +49,8 @@
             android:paddingBottom="20dp"
             app:interval_height="50"
             app:interval_width="40"
-            app:child_height="100">
+            app:child_height="100"
+            android:background="@color/colorPrimary">
         </tinkoff.hw.thirdviewgroup.MyViewGroup>
     </LinearLayout>
 </ScrollView>
