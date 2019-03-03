@@ -10,7 +10,7 @@ class MyViewGroup : ViewGroup {
     var lastViews:ArrayList<Int> = ArrayList()
     var paddingWidth = 0
     var paddingHeight = 0
-    var childHeight = 0
+    var childHeight = 50
     var gravity = Gravity.LEFT
     constructor(context: Context) : super(context)
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
