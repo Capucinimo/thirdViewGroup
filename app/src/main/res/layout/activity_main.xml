@@ -2,25 +2,19 @@
 <ScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/ScrollView"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         tools:context=".MainActivity"
         android:orientation="vertical">
     <LinearLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/LinearLayout"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
             tools:context=".MainActivity"
             android:orientation="vertical">
         <tinkoff.hw.thirdviewgroup.MyViewGroup
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:tools="http://schemas.android.com/tools"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
             android:animateLayoutChanges="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -30,14 +24,10 @@
             android:paddingLeft="50dp"
             android:paddingTop="50dp"
             android:paddingBottom="50dp"
-            app:interval_height="10"
-            app:interval_width="20"
-            app:child_height="70">
-        </tinkoff.hw.thirdviewgroup.MyViewGroup>
+            app:interval_height="5dp"
+            app:interval_width="10dp"
+            app:child_height="35dp"/>
         <tinkoff.hw.thirdviewgroup.MyViewGroup
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:tools="http://schemas.android.com/tools"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
             android:animateLayoutChanges="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -47,10 +37,9 @@
             android:paddingLeft="20dp"
             android:paddingTop="20dp"
             android:paddingBottom="20dp"
-            app:interval_height="50"
-            app:interval_width="40"
-            app:child_height="100"
-            android:background="@color/colorPrimary">
-        </tinkoff.hw.thirdviewgroup.MyViewGroup>
+            app:interval_height="10dp"
+            app:interval_width="10dp"
+            app:child_height="50dp"
+            android:background="@color/colorPrimary"/>
     </LinearLayout>
 </ScrollView>

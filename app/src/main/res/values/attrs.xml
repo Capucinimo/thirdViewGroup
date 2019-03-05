@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="MyViewGroup">
-        <attr name="interval_width" format="integer" />
-        <attr name="interval_height" format="integer" />
-        <attr name="child_height" format="integer" />
+        <attr name="interval_width" format="dimension" />
+        <attr name="interval_height" format="dimension" />
+        <attr name="child_height" format="dimension" />
         <attr name="android:gravity"/>
     </declare-styleable>
 </resources>
